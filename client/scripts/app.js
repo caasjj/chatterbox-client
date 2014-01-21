@@ -1,55 +1,87 @@
 // YOUR CODE HERE:
 var Chatterbox = function() {
    // private data
-  var username      = window.location.search.slice( window.location.search.search('=')+1 );
-  var roomsList     = [];
-  var roomsJoined   = [];
-  var onlineUsers   = [];
-  var friends       = [];
-  var timer         = null;
+  var timer          = null;
+
+  // parameters
+  this._username      = window.location.search.slice( window.location.search.search('=')+1 );
+  this._roomsList     = [];
+  this._roomsJoined   = [];
+  this._onlineUsers   = [];
+  this._friends       = [];
+  this._messageList   = new MessageList(30);
 
   // public data
-  this.chatterboxUrl = "https://api.parse.com/1/classes/chatterbox";
+  this._chatterboxUrl = "https://api.parse.com/1/classes/chatterbox";
+
+  // bind object methods to object
+  for(var key in this) {
+    if (typeof this[key] === 'function') {
+      console.log('binding ', key);
+      _.bind( this[key], this);
+    }
+  }
 
   // Class methods
   Chatterbox.start = function(func) {
     timer = setInterval(_.bind(func, this), 2000);
   };
 
-  Chatterbox.stop = function() { 
+  Chatterbox.stop = function() {
     clearInterval( timer );
-  }
+  };
 
 };
 
 // private methods
-Chatterbox.prototype._fetch = function() {
-
+Chatterbox.prototype._fetch = function(objectId) {
+  return $.ajax({
+      url: this.chatterboxUrl + (objectId && '/' + objectId),
+      type: 'GET',
+      contentType: 'application/json'
+    });
 };
 
-Chatterbox.prototype._transmit = function(roomName) {
-
+Chatterbox.prototype._transmit = function(message) {
+  return $.ajax({
+      url: this.chatterboxUrl,
+      type: 'POST',
+      data: message.json(),
+      contentType: 'application/json'
+    });
 };
 
-Chatterbox.prototype._transmitError = function() {
-
-};
-
-Chatterbox.prototype._parseReceiveMessage = function() {
-
+Chatterbox.prototype._transmitError = function(xhr, ajaxOptions, thrownError) {
+  console.error('Message transmission failed!');
 };
 
 Chatterbox.prototype._receiveError = function() {
+  console.error('Error while receiving messages');
+};
 
+Chatterbox.prototype._parseReceiveMessage = function(xhr, ajaxOptions, thrownError) {
+  console.log('Received messages');
 };
 
 // public API
 Chatterbox.prototype.sendMessage = function(message) {
-
+    this
+      ._transmit(message)
+      .then(this.fetchMessages,
+            this._transmitError,
+            function() {
+              console.log('Message transmission complete');
+            });
 };
 
-Chatterbox.prototype.receiveMessage = function(objectId) {
-
+Chatterbox.prototype.fetchMessages = function(objectId) {
+   this
+     ._fetch(objectId)
+     .then(this._parseReceiveMessage,
+           this._receiveError,
+           function() {
+            console.log('Received new message set');
+           });
 };
 
 Chatterbox.prototype.createRoom = function(roomName) {
