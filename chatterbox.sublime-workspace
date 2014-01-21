@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"fe",
+				"fetchMessages"
+			],
+			[
+				"me",
+				"messages"
+			],
+			[
+				"_me",
+				"_messageList"
+			],
+			[
+				"filter",
+				"filterList"
+			],
+			[
+				"object",
+				"objectId"
+			],
+			[
+				"cha",
+				"chatterbox"
+			],
+			[
+				"_tran",
+				"_transmitSuccess"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"send",
+				"sendMessage"
+			],
+			[
+				"read",
+				"readMessage"
+			],
+			[
 				"t",
 				"transmitMessage"
 			],
@@ -131,7 +171,7 @@
 			"file": "bower.json",
 			"settings":
 			{
-				"buffer_size": 225,
+				"buffer_size": 252,
 				"line_ending": "Unix"
 			}
 		},
@@ -139,15 +179,15 @@
 			"file": "client/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 1126,
+				"buffer_size": 3513,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/scripts/config.js",
+			"file": "client/scripts/message.js",
 			"settings":
 			{
-				"buffer_size": 659,
+				"buffer_size": 1246,
 				"line_ending": "Unix"
 			}
 		},
@@ -155,15 +195,15 @@
 			"file": "client/index.html",
 			"settings":
 			{
-				"buffer_size": 536,
+				"buffer_size": 2121,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/styles/styles.css",
+			"file": "/Users/walid/Sites/WebStudy/Handlebars/templates/array_of_objs_templ.html",
 			"settings":
 			{
-				"buffer_size": 303,
+				"buffer_size": 86,
 				"line_ending": "Unix"
 			}
 		}
@@ -208,6 +248,9 @@
 	},
 	"file_history":
 	[
+		"/Users/walid/Sites/WebStudy/Handlebars/templates/array_of_objs_templ.html",
+		"/Users/walid/Sites/HackReactor/2014-01-chatterbox-client/client/scripts/config.js",
+		"/Users/walid/Sites/HackReactor/2014-01-chatterbox-client/client/styles/styles.css",
 		"/Users/walid/Sites/HackReactor/2014-01-self-assessments-week-02/algo-find-dup-char/algo-find-dup-char.js",
 		"/Users/walid/Sites/HackReactor/2014-01-self-assessments-week-02/js-inheritance-pseudo-classical/js-inheritance-pseudo-classical.js",
 		"/Users/walid/Sites/HackReactor/2014-01-self-assessments-week-02/d3-describe/d3-describe.js",
@@ -332,10 +375,7 @@
 		"/Users/walid/Sites/PHP/TEST/composer.json",
 		"/Users/walid/Sites/fileupload.php",
 		"/Users/walid/Sites/mail.php",
-		"/Users/walid/Sites/phpinfo.php",
-		"/Users/walid/Sites/phpversion.php",
-		"/Users/walid/Documents/mp/HelloWorld/frameworks/The-M-Project/modules/core/foundation/object.js",
-		"/Users/walid/Documents/mp/HelloWorld/frameworks/The-M-Project/modules/core/foundation/model.js"
+		"/Users/walid/Sites/phpinfo.php"
 	],
 	"find":
 	{
@@ -353,6 +393,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"url",
 			"instance.",
 			"storage",
 			"head",
@@ -397,7 +438,7 @@
 					"file": "bower.json",
 					"settings":
 					{
-						"buffer_size": 225,
+						"buffer_size": 252,
 						"regions":
 						{
 						},
@@ -425,46 +466,54 @@
 					"file": "client/scripts/app.js",
 					"settings":
 					{
-						"buffer_size": 1126,
+						"buffer_size": 3513,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								698,
-								698
+								2983,
+								2983
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": 2.0,
+						"translation.y": 752.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
 				{
 					"buffer": 2,
-					"file": "client/scripts/config.js",
+					"file": "client/scripts/message.js",
 					"settings":
 					{
-						"buffer_size": 659,
+						"buffer_size": 1246,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								659,
-								659
+								727,
+								727
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -477,15 +526,15 @@
 					"file": "client/index.html",
 					"settings":
 					{
-						"buffer_size": 536,
+						"buffer_size": 2121,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								457,
-								457
+								1907,
+								1907
 							]
 						],
 						"settings":
@@ -495,32 +544,30 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 5.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "client/styles/styles.css",
+					"file": "/Users/walid/Sites/WebStudy/Handlebars/templates/array_of_objs_templ.html",
 					"settings":
 					{
-						"buffer_size": 303,
+						"buffer_size": 86,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								86,
+								86
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -548,11 +595,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.512100082034,
 			1.0
 		],
 		"rows":

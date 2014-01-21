@@ -1,37 +1,45 @@
 var MessageList = function(depth) {
-  this.messages = [];
-  this.depth = depth || 50;
+  this._messages = [];
+  this._depth = depth || 100;
 };
 
 MessageList.prototype.addMessages = function(messages) {
-  this.messages = this.messages.concat( messages );
-  this.messages = this.messages.splice(-this.depth);
+  for(var i=0; i<messages.length; i++) {
+    this._messages.push( new Message(messages[i]) );
+  }
+  this._messages = this._messages.splice(0, this._depth);
 };
 
 MessageList.prototype.filter = function( filterList ) {
   if (filterList.hasOwnProperty('rooms')) {
-    filter = 'room';
+    var filter = 'rooms';
+    var field = 'roomName';
   } else if (filterList.hasOwnProperty('friends')) {
-    filter = 'friend';
+    var filter = 'friends';
+    var field = 'username'
   } else {
-    return this.messages.slice(0);
+    return this._messages.slice(0);
   }
-  return this.messages.filter( function(message) {
-    return filterList[filter+'s'].indexOf( message[filter]) > -1;
+  return this._messages.filter( function(message) {
+    return filterList[filter].indexOf( message[field]) > -1;
   });
 };
 
-var Message = function(message, username, room) {
-  this.message  = message;
-  this.username = username;
-  this.room     = room;
+var Message = function(message) {
+  this.text = message.text;
+  this.username = message.username;
+  this.createdAt = message.createdAt || undefined;
+  this.roomName = message.roomname;
+  this.objectId = message.objectId;
+
 };
 
 Message.prototype.json = function() {
   return JSON.stringify( {
+    text: this.text,
     username: this.username,
-    message: this.message,
-    room: this.room
+    roomname: this.roomName,
+    createdAt: this.createdAt
   } );
 };
 

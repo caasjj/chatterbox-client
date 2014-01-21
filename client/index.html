@@ -14,8 +14,6 @@
   <script src="bower_components/handlebars/handlebars.js"></script>
   <!-- internal javascript -->
   <script src="scripts/config.js"></script>
-  <script src="scripts/message.js"></script>
-  <script src="scripts/app.js"></script>
 </head>
 <body>
   <div class="container">
@@ -34,25 +32,32 @@
         <input type="text" id="type-chat" class="form-control" placeholder="type here">
       </section>
     </div>
+    <!-- Main chat  area-->
     <div class="row chat-main">
-        <section class='chat-rooms col-md-2'>
-          <ul class="room-list">
-            <li>{{rooms}}</li>
-          </ul>
-        </section>
-        <section class='chat-display col-md-8'>
-          <ul class="chat-list">
-            <li>{{chats}}</li>
-          </ul>
-        </section>
-        <section class='chat-users col-md-2'>
-          <ul class="user-list">
-            <p>{{users}}</p>
+      <section class='chat-rooms col-md-2'>
+        <ul class="room-list">
+          <li>{{rooms}}</li>
         </ul>
-        </section>
+      </section>
+      <section class='chat-display col-md-8'>
+        <script id="chats" type="text/x-handlebars-template">
+        <ul>{{#each this}}
+            <li>{{username}} {{text}}</li>    
+            {{/each}}  
+        </ul>
+        </script>
+      </section>
+      <section class='chat-users col-md-2'>
+        <script id='users' type="text/x-handlebars-template">
+        <ul class="user-list">
+          <p>{{users}}</p>
+        </ul>
+        </script>
+      </section>
     </div>
-  <!-- Chat display -->
-</div>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  </div>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="scripts/message.js"></script>
+  <script src="scripts/app.js"></script>
 </body>
 </html>
