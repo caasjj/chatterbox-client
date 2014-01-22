@@ -4,6 +4,7 @@ var MessageList = function(depth) {
 };
 
 MessageList.prototype.addMessages = function(messages) {
+  this._messages = [];
   for(var i=0; i<messages.length; i++) {
     this._messages.push( new Message(messages[i]) );
   }
@@ -11,25 +12,28 @@ MessageList.prototype.addMessages = function(messages) {
 };
 
 MessageList.prototype.filter = function( filterList ) {
+  var filter, field;
   if (filterList.hasOwnProperty('rooms')) {
-    var filter = 'rooms';
-    var field = 'roomName';
+    filter = 'rooms';
+    field = 'roomname';
   } else if (filterList.hasOwnProperty('friends')) {
-    var filter = 'friends';
-    var field = 'username'
+    filter = 'friends';
+    field = 'username';
   } else {
     return this._messages.slice(0);
   }
-  return this._messages.filter( function(message) {
+  var filtered =  this._messages.filter( function(message) {
     return filterList[filter].indexOf( message[field]) > -1;
   });
+
+  return filtered;
 };
 
 var Message = function(message) {
   this.text = message.text;
   this.username = message.username;
   this.createdAt = message.createdAt || undefined;
-  this.roomName = message.roomname;
+  this.roomname = message.roomname;
   this.objectId = message.objectId;
 
 };
@@ -38,7 +42,7 @@ Message.prototype.json = function() {
   return JSON.stringify( {
     text: this.text,
     username: this.username,
-    roomname: this.roomName,
+    roomname: this.roomname,
     createdAt: this.createdAt
   } );
 };

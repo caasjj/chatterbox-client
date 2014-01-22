@@ -26,7 +26,12 @@
 .joined-room {
     background-color: blue;
 }
-
+.date {
+  color: red;
+}
+.name {
+  color: blue;
+}
 ul {
   list-style: none;
 }

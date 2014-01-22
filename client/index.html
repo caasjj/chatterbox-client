@@ -25,32 +25,39 @@
     <div class="row chat-input">
       <section class='new-chat-room col-md-2'>
         <label for="new-room"></label>
-        <input type="text" id="new-room" class="form-control"placeholder="New room">
+        <input type="text" id="new-room" class="form-control"placeholder="New room"/>
       </section>
       <section class="col-md-8">
         <label for="type-chat"></label>
-        <input type="text" id="type-chat" class="form-control" placeholder="type here">
+        <input type="text" id="type-chat" class="form-control" placeholder="type here"/>
       </section>
     </div>
     <!-- Main chat  area-->
     <div class="row chat-main">
       <section class='chat-rooms col-md-2'>
-        <ul class="room-list">
-          <li>{{rooms}}</li>
+        <script id="rooms" type="text/x-handlebars-template">
+        <ul class="room-list">{{#each this}}
+          <li>{{roomname}}</li>
+          {{/each}}
         </ul>
+        </script>
       </section>
       <section class='chat-display col-md-8'>
         <script id="chats" type="text/x-handlebars-template">
         <ul>{{#each this}}
-            <li>{{username}} {{text}}</li>    
-            {{/each}}  
+            <li><span class="date">{{createdAt}}</span> 
+                <span class="name">{{username}}</span>
+                <span class="message-text"> {{text}} </span>
+            </li>
+            {{/each}}
         </ul>
         </script>
       </section>
       <section class='chat-users col-md-2'>
         <script id='users' type="text/x-handlebars-template">
-        <ul class="user-list">
-          <p>{{users}}</p>
+        <ul class="user-list">{{#each this}}
+          <li>{{username}}</li>
+        {{/each}}
         </ul>
         </script>
       </section>
@@ -58,6 +65,7 @@
   </div>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="scripts/message.js"></script>
+  <script src="scripts/view.js"></script>
   <script src="scripts/app.js"></script>
 </body>
 </html>
